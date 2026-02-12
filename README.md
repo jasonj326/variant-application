@@ -24,5 +24,11 @@ Sync (Firefighter Mode): For quick gut-checks, DM me on Telegram/Signal. This is
 
 Response Times: I generally reply to messages within 12 hours generally, within 4 hours during work hours. If it's a true emergency, call me.
 
+🤝 How I Handle Conflict and Pushback
+
+I don’t mistake the law for the status quo. I’m here to help build the future, not rap sheet. Still, there is a hard line at actual wrongdoing. I’m not your guy—if you want to learn How to Get Away with Murder, stick to Netflix.
+
+With a scout’s curiosity, Bayesian probability lens, and relentless fact-driven legal scrutiny, I welcome pushback—it’s the fastest way to calibrate new facts and whether we’re building something sustainable and unbreakable. 
+
 
 Note: This README is a living document. As I learn, grow, and adapt, this guide will evolve alongside me.
