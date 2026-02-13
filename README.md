@@ -38,13 +38,8 @@ With a scout’s curiosity, Bayesian probability lens, and relentless fact-drive
 
 2. I love connecting the dots—I find similarities between Frieren (芙莉蓮) and Sheldon Cooper—both are geniuses who initially lack emotional awareness, but grow through their journeys with peers. Those little discoveries genuinely entertain me.
 
-3. I'm a quote nerd, which has taught me that most famous quotes weren't actually said by the people we credit them to.
-&nbsp;
-   (E.g., Mark Twain probably didn't say, “If you have to eat a frog, eat it first thing in the morning; if you have to eat two, eat the bigger one first.”)
-   &nbsp;
-It reminds me: attribution is often fluff—the real value is in the idea itself, plus you can rarely prove a negative anyway (thanks, burden of proof).
+3. I’m a quote nerd—I thought I could shortcut to wisdom this way. I was half right: many famous lines aren’t actually by the people we credit, the idea matters more than the name, and misattribution is usually impossible to disprove (thanks, burden of proof).
 
- 
 Note: This README is a living document. As I learn, grow, and adapt, this guide will evolve alongside me.
 
 &nbsp;
