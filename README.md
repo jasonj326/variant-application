@@ -24,7 +24,7 @@ Async (Deep Work): For legal and regulatory analysis, share your thoughts and qu
 
 Sync (Firefighter Mode): For quick gut-checks, DM me on Telegram/Signal. This is for sprinting through urgent issues in real-time.
 
-Response Times: I usually reply within 12 hours; during work hours, ~90 minutes. For true emergencies, call me—24/7. If we’re onsite, tap me on the shoulder; if remote, ring me.
+Response Times: I usually reply within 12 hours; during work hours, ~90 minutes. For true emergencies, call me—24/7. When we’re onsite, tap me on the shoulder; if I'm out of sight, ring me.
 
 🤝 How I Handle Conflict and Pushback
 
