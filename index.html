@@ -40,6 +40,21 @@
         details[open] .toggle-icon {
             transform: rotate(180deg);
         }
+
+        /* PRINT STYLES - Hides buttons when printing */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            body {
+                background-color: white;
+            }
+            /* Remove shadows for cleaner print */
+            .shadow-sm, .shadow-md, .shadow-lg {
+                box-shadow: none !important;
+                border: 1px solid #eee;
+            }
+        }
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col">
@@ -55,9 +70,14 @@
                 
                 <h1 class="text-3xl font-bold tracking-tight text-gray-900">Jason Jian-Shuen Lai</h1>
                 <p class="text-gray-500 mt-1 font-medium">Legal Builder for the Ownership Economy</p>
-                <p class="text-sm text-gray-400 mt-1">NY Bar | APAC Regulatory | Product & Protocol Counsel | Relocating to NYC </p>
+                <p class="text-sm text-gray-400 mt-1">NY Bar | APAC Regulatory | Product & Protocol Counsel | Relocating to NYC</p>
             </div>
-            <div class="mt-4 md:mt-0 flex gap-4">
+            <div class="mt-4 md:mt-0 flex gap-4 no-print">
+                <!-- PRINT BUTTON -->
+                <button onclick="printPage()" class="px-4 py-2 border border-gray-300 text-gray-700 text-sm font-semibold rounded hover:bg-gray-50 transition flex items-center gap-2">
+                    <i class="fa-solid fa-file-pdf"></i> Save as PDF
+                </button>
+
                 <a href="mailto:jason@jasonjlai.net" class="px-4 py-2 bg-black text-white text-sm font-semibold rounded hover:bg-gray-800 transition">Contact Me</a>
                 <a href="https://www.linkedin.com/in/psjasonlai/" target="_blank" class="px-4 py-2 border border-gray-300 text-gray-700 text-sm font-semibold rounded hover:bg-gray-50 transition">LinkedIn</a>
             </div>
@@ -96,10 +116,10 @@
                         <span class="toggle-icon text-gray-400"><i class="fa-solid fa-chevron-down"></i></span>
                     </summary>
                     <div class="px-5 pb-5 pt-0 text-gray-600 border-t border-gray-100 mt-2">
-                        <ul class="list-disc list-outside pl-5 space-y-2 mt-4">
+                        <p class="text-sm italic text-gray-500 mt-4 mb-2">"Leverage deep expertise in crypto legal and regulatory matters to assist the CLO in providing strategic value to founders. Collaborate with the investment team to utilize this expertise as a competitive advantage in winning deals."</p>
+                        <ul class="list-disc list-outside pl-5 space-y-2">
                             <li><strong>Licensing & Market Entry:</strong> Led cross-border licensing projects, including Singapore MAS MPI license covering token operations and U.S. FinCEN MSB registration, enabling compliant market entry under tight timelines.</li>
                             <li><strong>Execution:</strong> Advised executives to close US$18.7M in financings with the strategic investor Tether by aligning product roadmap, stakeholders, and regulatory narrative under scrutiny, and securing required cross-border approvals.</li>
-
                         </ul>
                     </div>
                 </details>
@@ -114,11 +134,11 @@
                         <span class="toggle-icon text-gray-400"><i class="fa-solid fa-chevron-down"></i></span>
                     </summary>
                     <div class="px-5 pb-5 pt-0 text-gray-600 border-t border-gray-100 mt-2">
-                        <ul class="list-disc list-outside pl-5 space-y-2 mt-4">
+                        <p class="text-sm italic text-gray-500 mt-4 mb-2">"Advise the CLO and manage outside counsel on a variety of firm legal matters, including deal execution for investments, coordination of responses to regulatory inquiries and examinations, fund formation, and other general corporate matters."</p>
+                        <ul class="list-disc list-outside pl-5 space-y-2">
                             <li><strong>Executive Alignment:</strong> Operated on a "no surprises" basis—prioritizing critical risks and maintaining high-velocity information flow to build trust early and keep the CLO ahead of the curve.</li>
                             <li><strong>Global Orchestration:</strong> Partnered with counsels across the U.S., Taiwan, Singapore, Australia, and offshore jurisdictions, setting clear expectations on scope, timing, and quality to keep work outcome-driven.</li>
                             <li><strong>Regulatory Communication:</strong> Hands-on experience coordinating high-stakes responses to U.S. law enforcement orders and global regulatory inquiries, ensuring precise, risk-mitigated disclosures.</li>
-
                         </ul>
                     </div>
                 </details>
@@ -133,7 +153,8 @@
                         <span class="toggle-icon text-gray-400"><i class="fa-solid fa-chevron-down"></i></span>
                     </summary>
                     <div class="px-5 pb-5 pt-0 text-gray-600 border-t border-gray-100 mt-2">
-                        <ul class="list-disc list-outside pl-5 space-y-2 mt-4">
+                        <p class="text-sm italic text-gray-500 mt-4 mb-2">"Externalize unique insights on legal and regulatory through persuasive writing targeted to founders (not lawyers)."</p>
+                        <ul class="list-disc list-outside pl-5 space-y-2">
                             <li><strong>Macro & Micro Approach:</strong> Converted vision, strategy, and legal nuance into deployable tools—e.g., redesigning custody models, UI/UX designs, and sequencing GTM.</li>
                             <li><strong>Dual Fluency:</strong> Aligned regulatory objectives with builder constraints—then redesign narratives and interfaces so both sides can say yes.</li>
                             <li><strong>Briefings for Internal Stakeholders:</strong> Drafted memoranda and talking points for Director-General and executives, proving ability to simplify complex topics for high-level decision makers.</li>
@@ -151,7 +172,8 @@
                         <span class="toggle-icon text-gray-400"><i class="fa-solid fa-chevron-down"></i></span>
                     </summary>
                     <div class="px-5 pb-5 pt-0 text-gray-600 border-t border-gray-100 mt-2">
-                        <ul class="list-disc list-outside pl-5 space-y-2 mt-4">
+                        <p class="text-sm italic text-gray-500 mt-4 mb-2">"Support portfolio companies by providing insight on policy developments and guidance on commercial, regulatory, and government relations strategy."</p>
+                        <ul class="list-disc list-outside pl-5 space-y-2">
                             <li><strong>Product Launch & GTM Enablement:</strong> Partnered with crypto startups to make products launch-ready—shaping GTM, custody choices, token mechanics, and commercial terms so teams can ship, partner, and scale with well-calibrated risk.</li>
                             <li><strong>DAO & Governance Execution:</strong> Designed workable DAO and governance structures across legal, product, and ops—aligning token governance with investor constraints so protocols could operate, raise, and list.</li>
                             <li><strong>Cyber Risk & Data Protection:</strong> Built cyber incident response playbooks and cyber risk assessments, converting security and data protection requirements into cost-effective compliance and vendor strategies.</li>
@@ -169,7 +191,8 @@
                         <span class="toggle-icon text-gray-400"><i class="fa-solid fa-chevron-down"></i></span>
                     </summary>
                     <div class="px-5 pb-5 pt-0 text-gray-600 border-t border-gray-100 mt-2">
-                        <ul class="list-disc list-outside pl-5 space-y-2 mt-4">
+                        <p class="text-sm italic text-gray-500 mt-4 mb-2">"Advise the firm’s investment team on policy developments relevant to specific deals and market sectors of interest."</p>
+                        <ul class="list-disc list-outside pl-5 space-y-2">
                             <li><strong>Investment Terms:</strong> Hands-on experience with debt financings, SAFEs, a priced equity round, and crypto-native structures including SAFTs and TGEs.</li>
                             <li><strong>Advisory Support & Risk Management:</strong> Advised offshore DeFi ventures and fund structuring/investment portfolio management; aligned product and legal teams quickly so executives can pursue opportunities with informed, well-calibrated risks.</li>
                         </ul>
@@ -186,7 +209,8 @@
                         <span class="toggle-icon text-gray-400"><i class="fa-solid fa-chevron-down"></i></span>
                     </summary>
                     <div class="px-5 pb-5 pt-0 text-gray-600 border-t border-gray-100 mt-2">
-                        <ul class="list-disc list-outside pl-5 space-y-2 mt-4">
+                        <p class="text-sm italic text-gray-500 mt-4 mb-2">"Communicate with the public about the firm’s policy work to demonstrate our expertise and leadership on issues that matter to entrepreneurs."</p>
+                        <ul class="list-disc list-outside pl-5 space-y-2">
                             <li><strong>Public Outreach:</strong> Published <em>"Ponzi or Promise? Comparative Digital Asset Regulation and Extraterritorial Enforcement in an Era of Polarized Belief"</em> (2025), "A Clear View of the Crypto Regulation Complexity (2023)" and <em>"The Spaghetti Effect of ICO Regulations"</em> (2020).</li>
                             <li><strong>Professional Network:</strong> Hosted a 4-month regulatory study group for legal professionals and wallet teams; submitted a proposal to speak at IAPP in 2026; contributed to forming the Taiwan VASP Association with operators and counsel.</li>
                         </ul>
@@ -272,9 +296,14 @@
                             <li>Head of Legal @ XREX Singapore (2021-2024)</li>
                             <li>JD from William & Mary Law School (2021) </li>
                             <li>Paralegal @ MaiCoin (2018)</li>
+                            
+                            <!-- New Relocation Point -->
+                            <li class="mt-4"><strong>Logistics:</strong> Fully committed to immediate NYC relocation (self-funded) to operate onsite with the team.</li>
                         </ul>
                     </div>
                 </div>
+
+            </div>
         </section>
 
         <!-- Chunk 3: The Journey & The "Why" -->
@@ -319,7 +348,8 @@
 
             </div>
         </section>
-<!-- Next Steps / CTA Section -->
+
+        <!-- Next Steps / CTA Section -->
         <section class="mt-12 border-t border-gray-200 pt-12">
             <div class="text-center mb-10">
                 <h2 class="text-3xl font-bold text-gray-900">Let's Build Together</h2>
@@ -390,6 +420,22 @@
             <p class="text-gray-400 text-xs mt-2">Jason Jian-Shuen Lai &copy; 2026</p>
         </div>
     </footer>
+
+    <!-- Print Logic Script -->
+    <script>
+        function printPage() {
+            // 1. Force all details to open
+            const allDetails = document.querySelectorAll('details');
+            allDetails.forEach(detail => {
+                detail.open = true;
+            });
+
+            // 2. Small delay to let browser render the opened details, then print
+            setTimeout(() => {
+                window.print();
+            }, 100);
+        }
+    </script>
 
 </body>
 </html>
