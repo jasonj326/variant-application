@@ -1,6 +1,6 @@
 Jason Lai: A Guide to Working with Me
 
-This is a living document intended to serve as a "user manual" for working with me. It’s inspired by the transparent culture of open-source communities. My goal here is to accelerate our working relationship by being upfront about my communication style, my professional philosophy, my quirks, and my values.
+This is a living document inspired by the transparent culture of open-source communities. My goal here is to accelerate our working relationship by being upfront about my communication style, my professional philosophy, my quirks, and my values.
 
 🎯 My Role
 
@@ -10,7 +10,7 @@ I view regulatory constraints as a strategic growth lever. I am here to help fou
 
 🧠 Professional Philosophy
 
-Builder-First: Having transitioned across a Paralegal/Government/Head of Legal to a Fractional GC, I care about your product roadmap just as much as the compliance matrix.
+Builder-First: I care about your product roadmap just as much as the compliance matrix. I'm here to find the sweetspot of commercial feasibiity, technical efforts, and regulatory compliance.
 
 Clarity and Brevity: I strongly believe in "Smart Brevity." If I am handing an investment committee or a founder a 20-page memo, I have failed. I distill complex risk into actionable decision logs, trackers, and go/no-go inputs.
 
@@ -36,13 +36,16 @@ With a scout’s curiosity, Bayesian probability lens, and relentless fact-drive
 
 1. I'm really bad at memorizing names—I even have to finish non-fiction books in a single week, or I have to start them over from the beginning.
 
-2. I love connecting the dots—I find similarities between Frieren (芙莉蓮) and Sheldon, and those little discoveries genuinely entertain me.
+2. I love connecting the dots—I find similarities between Frieren (芙莉蓮) and Sheldon Cooper—both are geniuses who initially lack emotional awareness, but grow through their journeys with peers. Those little discoveries genuinely entertain me.
 
 3. I'm a quote nerd, which has taught me that most famous quotes weren't actually said by the people we credit them to.
-   (e.g., Mark Twain probably didn't say, “If you have to eat a frog, eat it first thing in the morning; if you have to eat two, eat the bigger one first.”)
-   It reminds me: attribution is often fluff—the real value is in the idea itself, plus you can rarely prove a negative anyway (thanks, burden of proof).
+&nbsp;
+   (E.g., Mark Twain probably didn't say, “If you have to eat a frog, eat it first thing in the morning; if you have to eat two, eat the bigger one first.”)
+   &nbsp;
+It reminds me: attribution is often fluff—the real value is in the idea itself, plus you can rarely prove a negative anyway (thanks, burden of proof).
 
  
 Note: This README is a living document. As I learn, grow, and adapt, this guide will evolve alongside me.
 
-[Last update: 2026.2.12]
+&nbsp;
+[Last update: 2026.2.13]
