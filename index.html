@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +7,20 @@
     <title>Jason Lai | Candidate for Variant Fund</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Tailwind Config for Dark Mode -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
         
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8f9fa;
-            color: #1a1a1a;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         /* Smooth animation for details */
@@ -47,39 +54,73 @@
                 display: none !important;
             }
             body {
-                background-color: white;
+                background-color: white !important;
+                color: black !important;
             }
             /* Remove shadows for cleaner print */
             .shadow-sm, .shadow-md, .shadow-lg {
                 box-shadow: none !important;
-                border: 1px solid #eee;
+                border: 1px solid #eee !important;
+            }
+            /* Force details expanded */
+            details {
+                display: block !important;
+            }
+            details[open] > summary {
+                margin-bottom: 10px;
+                font-weight: bold;
+            }
+            /* Reset dark mode overrides for print */
+            .dark\:bg-gray-900, .dark\:bg-gray-950, .dark\:bg-gray-800 {
+                background-color: white !important;
+            }
+            .dark\:text-white, .dark\:text-gray-100, .dark\:text-gray-300, .dark\:text-gray-400 {
+                color: black !important;
+            }
+            .dark\:border-gray-700, .dark\:border-gray-800 {
+                border-color: #ddd !important;
             }
         }
     </style>
+    
+    <!-- Theme Init Script to prevent flash -->
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
 </head>
-<body class="antialiased min-h-screen flex flex-col">
+<body class="antialiased min-h-screen flex flex-col bg-[#f8f9fa] text-[#1a1a1a] dark:bg-gray-950 dark:text-gray-100">
 
     <!-- Header / Hero -->
-    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50 dark:bg-gray-900 dark:border-gray-800 transition-colors">
         <div class="max-w-4xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-start md:items-center">
             <div>
                 <!-- NEW BADGE -->
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-900 text-white text-xs font-bold tracking-wider uppercase mb-3 shadow-sm">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-900 text-white text-xs font-bold tracking-wider uppercase mb-3 shadow-sm dark:bg-gray-800 dark:border dark:border-gray-700">
                     <i class="fa-solid fa-bolt text-yellow-400"></i> Prepared for the Variant Team
                 </div>
                 
-                <h1 class="text-3xl font-bold tracking-tight text-gray-900">Jason Jian-Shuen Lai</h1>
-                <p class="text-gray-500 mt-1 font-medium">Legal Builder for the Ownership Economy</p>
-                <p class="text-sm text-gray-400 mt-1">NY Bar | APAC Regulatory | Product & Protocol Counsel | Fully Committed to Relocating to NYC</p>
+                <h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Jason Jian-Shuen Lai</h1>
+                <p class="text-gray-500 mt-1 font-medium dark:text-gray-400">Legal Builder for the Ownership Economy</p>
+                <p class="text-sm text-gray-400 mt-1 dark:text-gray-500">NY Bar | APAC Regulatory | Product & Protocol Counsel | Fully Committed to Relocating to NYC</p>
             </div>
-            <div class="mt-4 md:mt-0 flex gap-4 no-print">
-                <!-- PRINT BUTTON -->
-                <button onclick="printPage()" class="px-4 py-2 border border-gray-300 text-gray-700 text-sm font-semibold rounded hover:bg-gray-50 transition flex items-center gap-2">
-                    <i class="fa-solid fa-file-pdf"></i> Save as PDF
+            <div class="mt-4 md:mt-0 flex flex-wrap gap-3 no-print">
+                <!-- DARK MODE TOGGLE -->
+                <button onclick="toggleTheme()" class="px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 text-sm font-semibold rounded hover:bg-gray-50 dark:hover:bg-gray-800 transition flex items-center justify-center w-10">
+                    <i class="fa-solid fa-moon dark:hidden"></i>
+                    <i class="fa-solid fa-sun hidden dark:block text-yellow-400"></i>
                 </button>
 
-                <a href="mailto:jason@jasonjlai.net" class="px-4 py-2 bg-black text-white text-sm font-semibold rounded hover:bg-gray-800 transition">Contact Me</a>
-                <a href="https://www.linkedin.com/in/psjasonlai/" target="_blank" class="px-4 py-2 border border-gray-300 text-gray-700 text-sm font-semibold rounded hover:bg-gray-50 transition">LinkedIn</a>
+                <!-- PRINT BUTTON -->
+                <button onclick="printPage()" class="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 text-sm font-semibold rounded hover:bg-gray-50 dark:hover:bg-gray-800 transition flex items-center gap-2">
+                    <i class="fa-solid fa-file-pdf"></i> <span class="hidden sm:inline">Save PDF</span>
+                </button>
+
+                <a href="mailto:jason@jasonjlai.net" class="px-4 py-2 bg-black text-white text-sm font-semibold rounded hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 transition">Contact Me</a>
+                <a href="https://www.linkedin.com/in/psjasonlai/" target="_blank" class="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 text-sm font-semibold rounded hover:bg-gray-50 dark:hover:bg-gray-800 transition">LinkedIn</a>
             </div>
         </div>
     </header>
@@ -89,9 +130,9 @@
 
         <!-- Intro Statement -->
         <section>
-            <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg">
-                <h2 class="text-xl font-bold text-blue-900 mb-2">Regulatory & Legal Value for Founders and Investment Teams</h2>
-                <p class="text-blue-800 leading-relaxed">
+            <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg dark:bg-blue-900/20 dark:border-blue-500 transition-colors">
+                <h2 class="text-xl font-bold text-blue-900 mb-2 dark:text-blue-100">Regulatory & Legal Value for Founders and Investment Teams</h2>
+                <p class="text-blue-800 leading-relaxed dark:text-blue-200">
                     Turning regulatory uncertainty into deal velocity and durable advantage for Variant and its founders.
                 </p>
             </div>
@@ -99,24 +140,24 @@
 
         <!-- Chunk 1: Fit to Mandate -->
         <section>
-            <div class="mb-6 border-b border-gray-200 pb-4">
-                <h2 class="text-2xl font-bold text-gray-900">1. Fit to the Mandate</h2>
-                <p class="text-gray-500 text-sm mt-1">Operationalizing regulation into decisions and deal terms.</p>
+            <div class="mb-6 border-b border-gray-200 pb-4 dark:border-gray-800">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">1. Fit to the Mandate</h2>
+                <p class="text-gray-500 text-sm mt-1 dark:text-gray-400">Operationalizing regulation into decisions and deal terms.</p>
             </div>
 
             <div class="space-y-4">
                 
                 <!-- Toggle 1 -->
-                <details class="group bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition">
+                <details class="group bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition dark:bg-gray-900 dark:border-gray-800">
                     <summary class="flex justify-between items-center p-5 cursor-pointer">
                         <div class="flex items-center gap-3">
-                            <div class="bg-gray-100 p-2 rounded text-gray-600"><i class="fa-solid fa-chess-knight"></i></div>
-                            <h3 class="text-lg font-semibold text-gray-800">Strategic Value to Founders & Investment Teams</h3>
+                            <div class="bg-gray-100 p-2 rounded text-gray-600 dark:bg-gray-800 dark:text-gray-300"><i class="fa-solid fa-chess-knight"></i></div>
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Strategic Value to Founders & Investment Teams</h3>
                         </div>
-                        <span class="toggle-icon text-gray-400"><i class="fa-solid fa-chevron-down"></i></span>
+                        <span class="toggle-icon text-gray-400 dark:text-gray-500"><i class="fa-solid fa-chevron-down"></i></span>
                     </summary>
-                    <div class="px-5 pb-5 pt-0 text-gray-600 border-t border-gray-100 mt-2">
-                        <p class="text-sm italic text-gray-500 mt-4 mb-2">"Leverage deep expertise in crypto legal and regulatory matters to assist the CLO in providing strategic value to founders. Collaborate with the investment team to utilize this expertise as a competitive advantage in winning deals."</p>
+                    <div class="px-5 pb-5 pt-0 text-gray-600 border-t border-gray-100 mt-2 dark:text-gray-400 dark:border-gray-800">
+                        <p class="text-sm italic text-gray-500 mt-4 mb-2 dark:text-gray-500">"Leverage deep expertise in crypto legal and regulatory matters to assist the CLO in providing strategic value to founders. Collaborate with the investment team to utilize this expertise as a competitive advantage in winning deals."</p>
                         <ul class="list-disc list-outside pl-5 space-y-2">
                             <li><strong>Licensing & Market Entry:</strong> Led cross-border licensing projects, including Singapore MAS MPI license covering token operations and U.S. FinCEN MSB registration, enabling compliant market entry under tight timelines.</li>
                             <li><strong>Execution:</strong> Advised executives to close US$18.7M in financings with the strategic investor Tether by aligning product roadmap, stakeholders, and regulatory narrative under scrutiny, and securing required cross-border approvals.</li>
@@ -125,16 +166,16 @@
                 </details>
                 
                 <!-- Toggle 2 -->
-                <details class="group bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition">
+                <details class="group bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition dark:bg-gray-900 dark:border-gray-800">
                     <summary class="flex justify-between items-center p-5 cursor-pointer">
                         <div class="flex items-center gap-3">
-                            <div class="bg-gray-100 p-2 rounded text-gray-600"><i class="fa-solid fa-microphone-lines"></i></div>
-                            <h3 class="text-lg font-semibold text-gray-800">Advise the CLO and Manage Outside Counsel</h3>
+                            <div class="bg-gray-100 p-2 rounded text-gray-600 dark:bg-gray-800 dark:text-gray-300"><i class="fa-solid fa-briefcase"></i></div>
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Advise the CLO and Manage Outside Counsel</h3>
                         </div>
-                        <span class="toggle-icon text-gray-400"><i class="fa-solid fa-chevron-down"></i></span>
+                        <span class="toggle-icon text-gray-400 dark:text-gray-500"><i class="fa-solid fa-chevron-down"></i></span>
                     </summary>
-                    <div class="px-5 pb-5 pt-0 text-gray-600 border-t border-gray-100 mt-2">
-                        <p class="text-sm italic text-gray-500 mt-4 mb-2">"Advise the CLO and manage outside counsel on a variety of firm legal matters, including deal execution for investments, coordination of responses to regulatory inquiries and examinations, fund formation, and other general corporate matters."</p>
+                    <div class="px-5 pb-5 pt-0 text-gray-600 border-t border-gray-100 mt-2 dark:text-gray-400 dark:border-gray-800">
+                        <p class="text-sm italic text-gray-500 mt-4 mb-2 dark:text-gray-500">"Advise the CLO and manage outside counsel on a variety of firm legal matters, including deal execution for investments, coordination of responses to regulatory inquiries and examinations, fund formation, and other general corporate matters."</p>
                         <ul class="list-disc list-outside pl-5 space-y-2">
                             <li><strong>Executive Alignment:</strong> Operated on a "no surprises" basis—prioritizing critical risks and maintaining high-velocity information flow to build trust early and keep the CLO ahead of the curve.</li>
                             <li><strong>Global Orchestration:</strong> Partnered with counsels across the U.S., Taiwan, Singapore, Australia, and offshore jurisdictions, setting clear expectations on scope, timing, and quality to keep work outcome-driven.</li>
@@ -144,18 +185,18 @@
                 </details>
                 
                 <!-- Toggle 3 -->
-                <details class="group bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition">
+                <details class="group bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition dark:bg-gray-900 dark:border-gray-800">
                     <summary class="flex justify-between items-center p-5 cursor-pointer">
                         <div class="flex items-center gap-3">
-                            <div class="bg-gray-100 p-2 rounded text-gray-600"><i class="fa-solid fa-language"></i></div>
-                            <h3 class="text-lg font-semibold text-gray-800">Externalize Regulatory Insight in Founder Language</h3>
+                            <div class="bg-gray-100 p-2 rounded text-gray-600 dark:bg-gray-800 dark:text-gray-300"><i class="fa-solid fa-pen-nib"></i></div>
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Externalize Regulatory Insight in Founder Language</h3>
                         </div>
-                        <span class="toggle-icon text-gray-400"><i class="fa-solid fa-chevron-down"></i></span>
+                        <span class="toggle-icon text-gray-400 dark:text-gray-500"><i class="fa-solid fa-chevron-down"></i></span>
                     </summary>
-                    <div class="px-5 pb-5 pt-0 text-gray-600 border-t border-gray-100 mt-2">
-                        <p class="text-sm italic text-gray-500 mt-4 mb-2">"Externalize unique insights on legal and regulatory through persuasive writing targeted to founders (not lawyers)."</p>
+                    <div class="px-5 pb-5 pt-0 text-gray-600 border-t border-gray-100 mt-2 dark:text-gray-400 dark:border-gray-800">
+                        <p class="text-sm italic text-gray-500 mt-4 mb-2 dark:text-gray-500">"Externalize unique insights on legal and regulatory through persuasive writing targeted to founders (not lawyers)."</p>
                         <ul class="list-disc list-outside pl-5 space-y-2">
-                            <li><strong>Macro & Micro Approach:</strong> Converted vision, strategy, and legal nuance into deployable tools—e.g., redesigning custody models, UI/UX designs, and sequencing GTM.</li>
+                            <li><strong>Macro Vision, Micro Precision:</strong> Converted vision, strategy, and legal nuance into deployable tools—e.g., redesigning custody models, UI/UX designs, and sequencing GTM..</li>
                             <li><strong>Dual Fluency:</strong> Aligned regulatory objectives with builder constraints—then redesign narratives and interfaces so both sides can say yes.</li>
                             <li><strong>Briefings for Internal Stakeholders:</strong> Drafted memoranda and talking points for Director-General and executives, proving ability to simplify complex topics for high-level decision makers.</li>
                         </ul>
@@ -163,18 +204,18 @@
                 </details>
 
                 <!-- Toggle 4 -->
-                <details class="group bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition">
+                <details class="group bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition dark:bg-gray-900 dark:border-gray-800">
                     <summary class="flex justify-between items-center p-5 cursor-pointer">
                         <div class="flex items-center gap-3">
-                            <div class="bg-gray-100 p-2 rounded text-gray-600"><i class="fa-solid fa-rocket"></i></div>
-                            <h3 class="text-lg font-semibold text-gray-800">Support Portfolio Companies </h3>
+                            <div class="bg-gray-100 p-2 rounded text-gray-600 dark:bg-gray-800 dark:text-gray-300"><i class="fa-solid fa-rocket"></i></div>
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Support Portfolio Companies </h3>
                         </div>
-                        <span class="toggle-icon text-gray-400"><i class="fa-solid fa-chevron-down"></i></span>
+                        <span class="toggle-icon text-gray-400 dark:text-gray-500"><i class="fa-solid fa-chevron-down"></i></span>
                     </summary>
-                    <div class="px-5 pb-5 pt-0 text-gray-600 border-t border-gray-100 mt-2">
-                        <p class="text-sm italic text-gray-500 mt-4 mb-2">"Support portfolio companies by providing insight on policy developments and guidance on commercial, regulatory, and government relations strategy."</p>
+                    <div class="px-5 pb-5 pt-0 text-gray-600 border-t border-gray-100 mt-2 dark:text-gray-400 dark:border-gray-800">
+                        <p class="text-sm italic text-gray-500 mt-4 mb-2 dark:text-gray-500">"Support portfolio companies by providing insight on policy developments and guidance on commercial, regulatory, and government relations strategy."</p>
                         <ul class="list-disc list-outside pl-5 space-y-2">
-                            <li><strong>Product Launch & GTM Enablement:</strong> Partnered with crypto startups to make products launch-ready, shaping GTM, policy, and commercial terms so teams can ship, partner, and scale through regulatory headwinds.</li>
+                            <li><strong>Product Launch & GTM Enablement:</strong> Partnered with crypto startups to make products launch-ready—shaping GTM, policy, and commercial terms so teams can ship, partner, and scale through regulatory headwinds.</li>
                             <li><strong>DAO & Governance Execution:</strong> Designed workable DAO and governance structures across legal, product, and ops—aligning token governance with investor constraints so protocols could operate, raise, and list.</li>
                             <li><strong>Cyber Risk & Data Protection:</strong> Built cyber incident response playbooks and cyber risk assessments, converting security and data protection requirements into cost-effective compliance and vendor strategies.</li>
                         </ul>
@@ -182,16 +223,16 @@
                 </details>
 
                 <!-- Toggle 5 -->
-                <details class="group bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition">
+                <details class="group bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition dark:bg-gray-900 dark:border-gray-800">
                     <summary class="flex justify-between items-center p-5 cursor-pointer">
                         <div class="flex items-center gap-3">
-                            <div class="bg-gray-100 p-2 rounded text-gray-600"><i class="fa-solid fa-magnifying-glass-dollar"></i></div>
-                            <h3 class="text-lg font-semibold text-gray-800">Advise Investment Team on Deal-Relevant Policy</h3>
+                            <div class="bg-gray-100 p-2 rounded text-gray-600 dark:bg-gray-800 dark:text-gray-300"><i class="fa-solid fa-magnifying-glass-dollar"></i></div>
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Advise Investment Team on Deal-Relevant Policy</h3>
                         </div>
-                        <span class="toggle-icon text-gray-400"><i class="fa-solid fa-chevron-down"></i></span>
+                        <span class="toggle-icon text-gray-400 dark:text-gray-500"><i class="fa-solid fa-chevron-down"></i></span>
                     </summary>
-                    <div class="px-5 pb-5 pt-0 text-gray-600 border-t border-gray-100 mt-2">
-                        <p class="text-sm italic text-gray-500 mt-4 mb-2">"Advise the firm’s investment team on policy developments relevant to specific deals and market sectors of interest."</p>
+                    <div class="px-5 pb-5 pt-0 text-gray-600 border-t border-gray-100 mt-2 dark:text-gray-400 dark:border-gray-800">
+                        <p class="text-sm italic text-gray-500 mt-4 mb-2 dark:text-gray-500">"Advise the firm’s investment team on policy developments relevant to specific deals and market sectors of interest."</p>
                         <ul class="list-disc list-outside pl-5 space-y-2">
                             <li><strong>Investment Terms:</strong> Hands-on experience with debt financings, SAFEs, a priced equity round, and crypto-native structures including SAFTs and TGEs.</li>
                             <li><strong>Advisory Support & Risk Management:</strong> Advised offshore DeFi ventures and fund structuring/investment portfolio management; aligned product and legal teams quickly so executives can pursue opportunities with informed, well-calibrated risks.</li>
@@ -200,16 +241,16 @@
                 </details>
 
                 <!-- Toggle 6 -->
-                <details class="group bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition">
+                <details class="group bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition dark:bg-gray-900 dark:border-gray-800">
                     <summary class="flex justify-between items-center p-5 cursor-pointer">
                         <div class="flex items-center gap-3">
-                            <div class="bg-gray-100 p-2 rounded text-gray-600"><i class="fa-solid fa-microphone-lines"></i></div>
-                            <h3 class="text-lg font-semibold text-gray-800">Public Policy Voice + Thought Leadership</h3>
+                            <div class="bg-gray-100 p-2 rounded text-gray-600 dark:bg-gray-800 dark:text-gray-300"><i class="fa-solid fa-microphone-lines"></i></div>
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Public Policy Voice + Thought Leadership</h3>
                         </div>
-                        <span class="toggle-icon text-gray-400"><i class="fa-solid fa-chevron-down"></i></span>
+                        <span class="toggle-icon text-gray-400 dark:text-gray-500"><i class="fa-solid fa-chevron-down"></i></span>
                     </summary>
-                    <div class="px-5 pb-5 pt-0 text-gray-600 border-t border-gray-100 mt-2">
-                        <p class="text-sm italic text-gray-500 mt-4 mb-2">"Communicate with the public about the firm’s policy work to demonstrate our expertise and leadership on issues that matter to entrepreneurs."</p>
+                    <div class="px-5 pb-5 pt-0 text-gray-600 border-t border-gray-100 mt-2 dark:text-gray-400 dark:border-gray-800">
+                        <p class="text-sm italic text-gray-500 mt-4 mb-2 dark:text-gray-500">"Communicate with the public about the firm’s policy work to demonstrate our expertise and leadership on issues that matter to entrepreneurs."</p>
                         <ul class="list-disc list-outside pl-5 space-y-2">
                             <li><strong>Public Outreach:</strong> Published <em>"Ponzi or Promise? Comparative Digital Asset Regulation and Extraterritorial Enforcement in an Era of Polarized Belief"</em> (2025), "A Clear View of the Crypto Regulation Complexity (2023)" and <em>"The Spaghetti Effect of ICO Regulations"</em> (2020).</li>
                             <li><strong>Professional Network:</strong> Hosted a 4-month regulatory study group for legal professionals and wallet teams; submitted a proposal to speak at IAPP in 2026; contributed to forming the Taiwan VASP Association with operators and counsel.</li>
@@ -221,22 +262,22 @@
 
         <!-- Chunk 2: Beyond Mandate -->
         <section>
-            <div class="mb-6 border-b border-gray-200 pb-4">
-                <h2 class="text-2xl font-bold text-gray-900">2. Meeting & Exceeding Qualifications</h2>
-                <p class="text-gray-500 text-sm mt-1">Aligning experience with Variant's ideal attributes and vision.</p>
+            <div class="mb-6 border-b border-gray-200 pb-4 dark:border-gray-800">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">2. Meeting & Exceeding Qualifications</h2>
+                <p class="text-gray-500 text-sm mt-1 dark:text-gray-400">Aligning experience with Variant's ideal attributes and vision.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 
                 <!-- Card 1 -->
-                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 dark:bg-gray-900 dark:border-gray-800">
                     <div class="flex items-center gap-2 mb-3">
                         <i class="fa-solid fa-check-circle text-green-600"></i>
-                        <h3 class="font-bold text-gray-800">The "Variant" Mindset</h3>
+                        <h3 class="font-bold text-gray-800 dark:text-gray-200">The "Variant" Mindset</h3>
                     </div>
-                    <p class="text-sm text-gray-600 mb-2"><em>Wanted: Ambitious, creative self-starter; passion for technological innovation; desire to think and write.</em></p>
-                    <hr class="border-gray-200 mb-2">
-                    <div class="text-gray-800 text-sm">
+                    <p class="text-sm text-gray-600 mb-2 dark:text-gray-400"><em>Wanted: The mindset of an ambitious and creative self-starter with a passion for technological innovation and a desire to think, write, and operate with excellence and precision.</em></p>
+                    <hr class="border-gray-200 mb-2 dark:border-gray-800">
+                    <div class="text-gray-800 text-sm dark:text-gray-300">
                         <strong>Builder-First Approach:</strong>
                         <ul class="list-disc list-outside pl-4 mt-1 space-y-1">
                             <li><strong>First 30 Days at Variant:</strong> Deliver at least one founder-facing playbook on a live regulatory friction point; synthesize Variant’s policy insights into a compounding internal playbook for deals and portfolio support; plug into deal execution and outside-counsel coordination.</li>
@@ -247,14 +288,14 @@
                 </div>
                 
                 <!-- Card 2 -->
-                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 dark:bg-gray-900 dark:border-gray-800">
                     <div class="flex items-center gap-2 mb-3">
                         <i class="fa-solid fa-check-circle text-green-600"></i>
-                        <h3 class="font-bold text-gray-800">Crypto-Native Understanding</h3>
+                        <h3 class="font-bold text-gray-800 dark:text-gray-200">Crypto Native Understanding</h3>
                     </div>
-                    <p class="text-sm text-gray-600 mb-2"><em>Wanted: Strong understanding of blockchain tech & landscape.</em></p>
-                    <hr class="border-gray-200 mb-2">
-                    <div class="text-gray-800 text-sm">
+                    <p class="text-sm text-gray-600 mb-2 dark:text-gray-400"><em>Wanted: Strong understanding of blockchain tech & landscape.</em></p>
+                    <hr class="border-gray-200 mb-2 dark:border-gray-800">
+                    <div class="text-gray-800 text-sm dark:text-gray-300">
                         <strong>Deep Technical & Regulatory Fluency:</strong>
                         <ul class="list-disc list-outside pl-4 mt-1 space-y-1">
                             <li><strong>Thesis-Aligned:</strong> Advance the ownership economy across Finance, Social, and DePIN with legal architectures built to withstand any market cycle.</li>
@@ -265,14 +306,14 @@
                 </div>
 
                 <!-- Card 3 -->
-                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 dark:bg-gray-900 dark:border-gray-800">
                     <div class="flex items-center gap-2 mb-3">
                         <i class="fa-solid fa-check-circle text-green-600"></i>
-                        <h3 class="font-bold text-gray-800">Communication Skills</h3>
+                        <h3 class="font-bold text-gray-800 dark:text-gray-200">Communication Skills</h3>
                     </div>
-                    <p class="text-sm text-gray-600 mb-2"><em>Wanted: Research complex issues & write for public audience.</em></p>
-                    <hr class="border-gray-200 mb-2">
-                    <div class="text-gray-800 text-sm">
+                    <p class="text-sm text-gray-600 mb-2 dark:text-gray-400"><em>Wanted: Research complex issues & write for public audience.</em></p>
+                    <hr class="border-gray-200 mb-2 dark:border-gray-800">
+                    <div class="text-gray-800 text-sm dark:text-gray-300">
                         <strong>Resilient Public Voice:</strong>
                         <ul class="list-disc list-outside pl-4 mt-1 space-y-1">
                             <li><strong>Resilience:</strong> Sustained writing and speaking on crypto regulation since 2019, including papers on ICOs and digital asset regulation and one tech law conference presentation—compounding signal through consistent public output.</li>
@@ -282,14 +323,14 @@
                 </div>
 
                 <!-- Card 4 -->
-                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 dark:bg-gray-900 dark:border-gray-800">
                     <div class="flex items-center gap-2 mb-3">
                         <i class="fa-solid fa-check-circle text-green-600"></i>
-                        <h3 class="font-bold text-gray-800">Relevant Experience & Credentials </h3>
+                        <h3 class="font-bold text-gray-800 dark:text-gray-200">Relevant Experience & Credentials </h3>
                     </div>
-                    <p class="text-sm text-gray-600 mb-2"><em>Wanted: 2+ years law firm or in-house & ABA-accredited law school.</em></p>
-                    <hr class="border-gray-200 mb-2">
-                    <div class="text-gray-800 text-sm">
+                    <p class="text-sm text-gray-600 mb-2 dark:text-gray-400"><em>Wanted: 2+ years law firm or in-house & ABA-accredited law school.</em></p>
+                    <hr class="border-gray-200 mb-2 dark:border-gray-800">
+                    <div class="text-gray-800 text-sm dark:text-gray-300">
                         <strong>Direct crypto in-house experience since 2018:</strong>
                         <ul class="list-disc list-outside pl-4 mt-1 space-y-1">
                             <li>Group Legal Counsel @ LightLink Group (Present)</li>
@@ -305,58 +346,58 @@
 
         <!-- Chunk 3: The Journey & The "Why" -->
         <section>
-            <div class="mb-6 border-b border-gray-200 pb-4">
-                <h2 class="text-2xl font-bold text-gray-900">3. The Journey & "Why me"</h2>
-                <p class="text-gray-500 text-sm mt-1">My approach to crypto regulation comes from a very specific personal evolution</p>
+            <div class="mb-6 border-b border-gray-200 pb-4 dark:border-gray-800">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">3. The Journey & "Why me"</h2>
+                <p class="text-gray-500 text-sm mt-1 dark:text-gray-400">My approach to crypto regulation comes from a very specific personal evolution</p>
             </div>
             
-            <p class="text-gray-700 mb-8 leading-relaxed">
+            <p class="text-gray-700 mb-8 leading-relaxed dark:text-gray-300">
                 Growing up in a Christian charity, I saw profound life struggles firsthand, but I also witnessed the deep, inherent goodness in people. I fought tooth and nail for my law degree because I wanted to make an impact. My professional worldview has evolved in three distinct shifts:
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 
                 <!-- Phase 1 -->
-                <div class="relative bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-                    <div class="absolute -top-4 left-6 bg-blue-100 text-blue-800 font-bold px-3 py-1 rounded text-sm">Phase 1</div>
-                    <h3 class="text-lg font-bold text-gray-900 mt-2 mb-2">The Shield <span class="text-gray-400 font-normal text-sm">(Law)</span></h3>
-                    <p class="text-sm text-gray-600 leading-relaxed">
+                <div class="relative bg-white p-6 rounded-lg border border-gray-200 shadow-sm dark:bg-gray-900 dark:border-gray-800">
+                    <div class="absolute -top-4 left-6 bg-blue-100 text-blue-800 font-bold px-3 py-1 rounded text-sm dark:bg-blue-900 dark:text-blue-100">Phase 1</div>
+                    <h3 class="text-lg font-bold text-gray-900 mt-2 mb-2 dark:text-gray-100">The Shield <span class="text-gray-400 font-normal text-sm dark:text-gray-500">(Law)</span></h3>
+                    <p class="text-sm text-gray-600 leading-relaxed dark:text-gray-400">
                         I wanted to make a better world through the law. I saw legal knowledge as raw power—the ultimate shield to protect myself and empower people like me. I believed the system, if understood, could provide a level playing field.
                     </p>
                 </div>
 
                 <!-- Phase 2 -->
-                <div class="relative bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-                    <div class="absolute -top-4 left-6 bg-blue-100 text-blue-800 font-bold px-3 py-1 rounded text-sm">Phase 2</div>
-                    <h3 class="text-lg font-bold text-gray-900 mt-2 mb-2">The Engine <span class="text-gray-400 font-normal text-sm">(Tech & Capital)</span></h3>
-                    <p class="text-sm text-gray-600 leading-relaxed">
+                <div class="relative bg-white p-6 rounded-lg border border-gray-200 shadow-sm dark:bg-gray-900 dark:border-gray-800">
+                    <div class="absolute -top-4 left-6 bg-blue-100 text-blue-800 font-bold px-3 py-1 rounded text-sm dark:bg-blue-900 dark:text-blue-100">Phase 2</div>
+                    <h3 class="text-lg font-bold text-gray-900 mt-2 mb-2 dark:text-gray-100">The Engine <span class="text-gray-400 font-normal text-sm dark:text-gray-500">(Tech & Capital)</span></h3>
+                    <p class="text-sm text-gray-600 leading-relaxed dark:text-gray-400">
                         I moved away from the "prudential" pace of law and government to embrace the startup world. For me, it’s simple: technology and capital are the most efficient tools we have to solve problems and protect people in real-time.
                     </p>
                 </div>
 
                 <!-- Phase 3 -->
-                <div class="relative bg-white p-6 rounded-lg border-blue-400 shadow-md ring-1 ring-blue-100">
-                    <div class="absolute -top-4 left-6 bg-blue-600 text-white font-bold px-3 py-1 rounded text-sm">Phase 3</div>
-                    <h3 class="text-lg font-bold text-gray-900 mt-2 mb-2">The Synthesis <span class="text-gray-400 font-normal text-sm">(Current)</span></h3>
-                    <p class="text-sm text-gray-600 leading-relaxed">
+                <div class="relative bg-white p-6 rounded-lg border-blue-400 shadow-md ring-1 ring-blue-100 dark:bg-gray-900 dark:border-blue-500/50 dark:ring-blue-900">
+                    <div class="absolute -top-4 left-6 bg-blue-600 text-white font-bold px-3 py-1 rounded text-sm dark:bg-blue-700">Phase 3</div>
+                    <h3 class="text-lg font-bold text-gray-900 mt-2 mb-2 dark:text-gray-100">The Synthesis <span class="text-gray-400 font-normal text-sm dark:text-gray-500">(Current)</span></h3>
+                    <p class="text-sm text-gray-600 leading-relaxed dark:text-gray-400">
                         I realized the highest leverage lies in combining these forces to build a sustainable, scalable ecosystem with AI and crypto. Today, my goal is to deploy the full weight of my commitment to law and crypto for Variant—operating with the intensity this frontier requires.
                     </p>
                 </div>
 
             </div>
         </section>
-
+        
         <!-- Next Steps / CTA Section -->
-        <section class="mt-12 border-t border-gray-200 pt-12">
+        <section class="mt-12 border-t border-gray-200 pt-12 dark:border-gray-800">
             <div class="text-center mb-10">
-                <h2 class="text-3xl font-bold text-gray-900">Let's Build Together</h2>
-                <p class="text-gray-500 mt-3">I can't wait to hear from you:</p>
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Let's Build Together</h2>
+                <p class="text-gray-500 mt-3 dark:text-gray-400">I can't wait to hear from you:</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 
                 <!-- CTA 1: Schedule -->
-                <div class="bg-gray-900 text-white rounded-xl p-6 shadow-lg flex flex-col h-full transform transition hover:-translate-y-1">
+                <div class="bg-gray-900 text-white rounded-xl p-6 shadow-lg flex flex-col h-full transform transition hover:-translate-y-1 dark:bg-gray-800 dark:border dark:border-gray-700">
                     <div class="mb-4">
                         <i class="fa-regular fa-calendar-check text-2xl text-blue-400 mb-3"></i>
                         <h3 class="text-xl font-bold mb-2">1. Schedule a Call</h3>
@@ -366,40 +407,39 @@
                     </div>
                     <div class="mt-auto pt-2">
                         <!-- REPLACE the href below with your Calendly or Cal.com link -->
-                        <a href="https://calendar.app.google/8FN1ZyK8P7XnayhQA" target="_blank" class="block w-full text-center px-4 py-2 bg-white text-gray-900 font-semibold rounded hover:bg-gray-100 transition">
+                        <a href="https://calendar.app.google/8FN1ZyK8P7XnayhQA" target="_blank" class="block w-full text-center px-4 py-2 bg-white text-gray-900 font-semibold rounded hover:bg-gray-100 transition dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600">
                             Book a Time
                         </a>
                     </div>
                 </div>
 
                 <!-- CTA 2: Insight -->
-                <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm flex flex-col h-full transform transition hover:-translate-y-1 hover:shadow-md">
+                <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm flex flex-col h-full transform transition hover:-translate-y-1 hover:shadow-md dark:bg-gray-900 dark:border-gray-800">
                     <div class="mb-4">
-                        <i class="fa-solid fa-file-contract text-2xl text-blue-600 mb-3"></i>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">2. Read My Insight</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">
+                        <i class="fa-solid fa-file-contract text-2xl text-blue-600 mb-3 dark:text-blue-500"></i>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2 dark:text-white">2. Read My Insight</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed dark:text-gray-400">
                             Below is a strategic insight drafted specifically for the Variant team, addressing a hypothetical adverse development under the GENIUS Act.
                         </p>
                     </div>
                     <div class="mt-auto pt-4">
-                        <!-- REPLACE the href below with your Notion or GitHub Markdown link -->
-                        <a href="https://docs.google.com/document/d/1h5EfXQ4K9jahjbv0RpFRjHxS1wG5TQZUgverXoGoEuY/edit?tab=t.0" target="_blank" class="block w-full text-center px-4 py-2 border border-gray-300 text-gray-700 font-semibold rounded hover:bg-gray-50 transition">
+                        <a href="https://docs.google.com/document/d/1h5EfXQ4K9jahjbv0RpFRjHxS1wG5TQZUgverXoGoEuY/edit?tab=t.0" target="_blank" class="block w-full text-center px-4 py-2 border border-gray-300 text-gray-700 font-semibold rounded hover:bg-gray-50 transition dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800">
                             Read the Insight
                         </a>
                     </div>
                 </div>
 
                 <!-- CTA 3: README -->
-                <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm flex flex-col h-full transform transition hover:-translate-y-1 hover:shadow-md">
+                <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm flex flex-col h-full transform transition hover:-translate-y-1 hover:shadow-md dark:bg-gray-900 dark:border-gray-800">
                     <div class="mb-4">
-                        <i class="fa-solid fa-terminal text-2xl text-blue-600 mb-3"></i>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">3. Read My User Manual</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">
+                        <i class="fa-solid fa-terminal text-2xl text-blue-600 mb-3 dark:text-blue-500"></i>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2 dark:text-white">3. Read My User Manual</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed dark:text-gray-400">
                             I believe in radical transparency. "README" helps you understand my communication style, quirks, and how I handle pushback.
                         </p>
                     </div>
                     <div class="mt-auto pt-4">
-                        <a href="https://github.com/jasonj326/variant-application-b7e3st/blob/main/README.md" target="_blank" class="block w-full text-center px-4 py-2 border border-gray-300 text-gray-700 font-semibold rounded hover:bg-gray-50 transition">
+                        <a href="https://github.com/jasonj326/variant-application-b7e3st/blob/main/README.md" target="_blank" class="block w-full text-center px-4 py-2 border border-gray-300 text-gray-700 font-semibold rounded hover:bg-gray-50 transition dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800">
                             View README
                         </a>
                     </div>
@@ -411,15 +451,28 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-gray-200 mt-auto">
+    <footer class="bg-white border-t border-gray-200 mt-auto dark:bg-gray-900 dark:border-gray-800">
         <div class="max-w-4xl mx-auto px-6 py-8 text-center">
-            <p class="text-gray-500 text-sm">Prepared for the Variant Team.</p>
-            <p class="text-gray-400 text-xs mt-2">Jason Jian-Shuen Lai &copy; 2026</p>
+            <p class="text-gray-500 text-sm dark:text-gray-500">Prepared for the Variant Team.</p>
+            <p class="text-gray-400 text-xs mt-2 dark:text-gray-600">Jason Jian-Shuen Lai &copy; 2026</p>
         </div>
     </footer>
 
-    <!-- Print Logic Script -->
+    <!-- Scripts -->
     <script>
+        // Toggle Theme
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Print PDF
         function printPage() {
             // 1. Force all details to open
             const allDetails = document.querySelectorAll('details');
