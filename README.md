@@ -38,9 +38,9 @@ With a scout’s curiosity, Bayesian probability lens, and relentless fact-drive
 
 2. I love connecting the dots—I find similarities between Frieren (芙莉蓮) and Sheldon Cooper—both are geniuses who initially lack emotional awareness, but grow through their journeys with peers. Those little discoveries genuinely entertain me.
 
-3. I’m a quote nerd—I thought I could shortcut to wisdom this way. I was half right: many famous lines aren’t actually by the people we credit, the idea matters more than the name, and misattribution is usually impossible to disprove (thanks, burden of proof).
+3. I’m a quote nerd—I thought I could shortcut to wisdom this way. I was half right: many famous lines aren’t actually by the people we credit, yet the idea matters more than the name, and misattribution is usually impossible to disprove (thanks, burden of proof).
 
 Note: This README is a living document. As I learn, grow, and adapt, this guide will evolve alongside me.
 
 &nbsp;
-[Last update: 2026.2.13]
+[Last update: 2026.2.14]
