@@ -10,17 +10,17 @@ I view regulatory constraints as a strategic growth lever. I am here to help fou
 
 🧠 Professional Philosophy
 
-Builder-First: I care about your product roadmap just as much as the compliance matrix. I'm here to find the sweetspot of commercial feasibiity, technical efforts, and regulatory compliance.
+Builder-First: I care about your product roadmap just as much as the compliance matrix. I'm here to find the sweetspot of commercial feasibility, technical efforts, and regulatory compliance.
 
 Clarity and Brevity: I strongly believe in "Smart Brevity." If I am handing an investment committee or a founder a 20-page memo, I have failed. I distill complex risk into actionable decision logs, trackers, and go/no-go inputs.
 
-Embrace the Gray: Perfect regulatory clarity does not exist in crypto or any emerging tech areas. My job is to underwrite the risk based on reason and human behavior predictions, provide Best/Base/Worst case scenarios, and give founders the confidence to ship.
+Embrace the Gray: Perfect regulatory clarity does not exist in crypto or any emerging tech. My job is to underwrite the risk based on reason and human behavior predictions, provide Best/Base/Worst case scenarios, and give founders the confidence to ship.
 
 💬 Communication Preferences
 
 Async vs. Sync: The Right Tool for the Job
 
-Async (Deep Work): For legal and regulatory analysis, share your thoughts and questions, along with facts and scenarios. This removes timezone limits and allows for "second thoughts" and creative reflection.
+Async (Deep Work): For legal and regulatory analysis, please share your thoughts and questions, along with facts and scenarios. This removes timezone limits and allows for "second thoughts" and creative reflection.
 
 Sync (Firefighter Mode): For quick gut-checks, DM me on Telegram/Signal. This is for sprinting through urgent issues in real-time.
 
@@ -30,9 +30,9 @@ Response Times: I usually reply within 24 hours; during work hours, ~90 minutes.
 
 I don’t mistake the law for the status quo. That said, there’s a hard line at actual wrongdoing. If you’re looking for How to Get Away with Murder, Netflix is the better use of time. I’ll push into gray zones and pressure-test edges, but I’m here to help build the future, not a rap sheet.
 
-With a scout’s curiosity, Bayesian probability lens, and relentless fact-driven legal scrutiny, I welcome pushback——it’s the fastest way to calibrate new facts and whether we’re building something sustainable and unbreakable. 
+With a scout’s curiosity, Bayesian probability lens, and relentless fact-driven legal scrutiny, I welcome pushback—it’s the fastest way to calibrate new facts and whether we’re building something sustainable and unbreakable. 
 
-💡 Fun facts About me:
+💡 Fun Facts About Me:
 
 1. I'm really bad at memorizing names—I even have to finish non-fiction books in a single week, or I have to start them over from the beginning.
 
@@ -43,4 +43,4 @@ With a scout’s curiosity, Bayesian probability lens, and relentless fact-drive
 Note: This README is a living document. As I learn, grow, and adapt, this guide will evolve alongside me.
 
 &nbsp;
-[Last update: 2026.2.14]
+[Last update: February 15, 2026]
